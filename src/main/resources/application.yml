@@ -1,17 +1,19 @@
 spring:
   datasource:
-    url: postgresql://postgres:aDAcCkVpwXzAutqpnNbVPZrMFmDkWSaC@postgres.railway.internal:5432/railway           # Utilise la variable DATABASE_URL de Railway
-    username: postgres            # Utilise PGUSER pour le nom d'utilisateur (postgres)
-    password: aDAcCkVpwXzAutqpnNbVPZrMFmDkWSaC        # Utilise PGPASSWORD pour le mot de passe
+    url: ${DATABASE_URL}           # Utilise la variable DATABASE_URL de Railway
+    username: ${PGUSER}            # Utilise PGUSER pour le nom d'utilisateur (postgres)
+    password: ${PGPASSWORD}        # Utilise PGPASSWORD pour le mot de passe
     driver-class-name: org.postgresql.Driver
 
   jpa:
     hibernate:
-      ddl-auto: update              # Change pour 'update' si tu veux éviter de créer la DB à chaque fois
+      ddl-auto: update             # Change pour 'update' si tu veux éviter de créer la DB à chaque fois
     show-sql: true
     properties:
       hibernate:
         format_sql: true
+        # Ajouter explicitement le dialecte PostgreSQL
+        hibernate.dialect: org.hibernate.dialect.PostgreSQLDialect
 
   mail:
     host: smtp.gmail.com
