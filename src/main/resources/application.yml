@@ -1,16 +1,18 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/gestion_patients
-    username: postgres
-    password: 060900
+    url: postgresql://postgres:aDAcCkVpwXzAutqpnNbVPZrMFmDkWSaC@postgres.railway.internal:5432/railway           # Utilise la variable DATABASE_URL de Railway
+    username: postgres            # Utilise PGUSER pour le nom d'utilisateur (postgres)
+    password: aDAcCkVpwXzAutqpnNbVPZrMFmDkWSaC        # Utilise PGPASSWORD pour le mot de passe
     driver-class-name: org.postgresql.Driver
+
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: update              # Change pour 'update' si tu veux éviter de créer la DB à chaque fois
     show-sql: true
     properties:
       hibernate:
         format_sql: true
+
   mail:
     host: smtp.gmail.com
     port: 587
@@ -22,6 +24,7 @@ spring:
           auth: true
           starttls:
             enable: true
+
   springfox:
     documentation:
       swagger-ui:
